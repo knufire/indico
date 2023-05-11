@@ -34,12 +34,12 @@ def _merge_users(target, source, **kwargs):
     AttachmentFolderPrincipal.merge_users(target, source, 'folder')
 
 
-@signals.menu.items.connect_via('event-management-sidemenu')
-def _extend_event_management_menu(sender, event, **kwargs):
-    if not can_manage_attachments(event, session.user):
-        return
-    return SideMenuItem('attachments', _('Materials'), url_for('attachments.management', event), 80,
-                        section='organization')
+# @signals.menu.items.connect_via('event-management-sidemenu')
+# def _extend_event_management_menu(sender, event, **kwargs):
+#     if not can_manage_attachments(event, session.user):
+#         return
+#     return SideMenuItem('attachments', _('Materials'), url_for('attachments.management', event), 80,
+#                         section='organization')
 
 
 @signals.event_management.management_url.connect

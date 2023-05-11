@@ -69,5 +69,5 @@ def render_breadcrumbs(*titles, category=None, event=None, management=False, cat
             items.append(Breadcrumb(cat.title, category_url_factory(cat, management=management)))
         items.reverse()
 
-    items += [Breadcrumb(title) if isinstance(title, str) else title for title in titles]
+    items = []
     return render_template('breadcrumbs.html', items=items, management=management)

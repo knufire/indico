@@ -52,17 +52,17 @@ def _merge_users(target, source, **kwargs):
     Registration.merge_users(target, source)
 
 
-@signals.menu.items.connect_via('event-management-sidemenu')
-def _extend_event_management_menu(sender, event, **kwargs):
-    registration_section = 'organization' if event.type == 'conference' else 'advanced'
-    if not event.can_manage(session.user, 'registration'):
-        return
-    if event.type != 'conference':
-        yield SideMenuItem('participants', _('Participants'), url_for('event_participation.manage', event),
-                           section='organization')
-    if event.has_feature('registration'):
-        yield SideMenuItem('registration', _('Registration'), url_for('event_registration.manage_regform_list', event),
-                           section=registration_section)
+# @signals.menu.items.connect_via('event-management-sidemenu')
+# def _extend_event_management_menu(sender, event, **kwargs):
+#     registration_section = 'organization' if event.type == 'conference' else 'advanced'
+#     if not event.can_manage(session.user, 'registration'):
+#         return
+#     if event.type != 'conference':
+#         yield SideMenuItem('participants', _('Participants'), url_for('event_participation.manage', event),
+#                            section='organization')
+#     if event.has_feature('registration'):
+#         yield SideMenuItem('registration', _('Registration'), url_for('event_registration.manage_regform_list', event),
+#                            section=registration_section)
 
 
 @template_hook('conference-home-info')

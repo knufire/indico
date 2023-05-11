@@ -17,11 +17,11 @@ from indico.web.menu import SideMenuItem
 logger = Logger.get('events.roles')
 
 
-@signals.menu.items.connect_via('event-management-sidemenu')
-def _sidemenu_items(sender, event, **kwargs):
-    if event.can_manage(session.user):
-        roles_section = 'organization' if event.type == 'conference' else 'advanced'
-        return SideMenuItem('roles', _('Roles Setup'), url_for('event_roles.manage', event), section=roles_section)
+# @signals.menu.items.connect_via('event-management-sidemenu')
+# def _sidemenu_items(sender, event, **kwargs):
+#     if event.can_manage(session.user):
+#         roles_section = 'organization' if event.type == 'conference' else 'advanced'
+#         return SideMenuItem('roles', _('Roles Setup'), url_for('event_roles.manage', event), section=roles_section)
 
 
 @signals.event_management.get_cloners.connect

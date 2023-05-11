@@ -44,11 +44,11 @@ def _extend_admin_menu(sender, **kwargs):
         return SideMenuItem('payment', _('Payment'), url_for('payment.admin_settings'), section='customization')
 
 
-@signals.menu.items.connect_via('event-management-sidemenu')
-def _extend_event_management_menu(sender, event, **kwargs):
-    if not event.has_feature('payment') or not event.can_manage(session.user):
-        return
-    return SideMenuItem('payment', _('Payments'), url_for('payment.event_settings', event), section='organization')
+# @signals.menu.items.connect_via('event-management-sidemenu')
+# def _extend_event_management_menu(sender, event, **kwargs):
+#     if not event.has_feature('payment') or not event.can_manage(session.user):
+#         return
+#     return SideMenuItem('payment', _('Payments'), url_for('payment.event_settings', event), section='organization')
 
 
 @signals.event.get_feature_definitions.connect

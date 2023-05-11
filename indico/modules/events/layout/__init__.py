@@ -63,15 +63,15 @@ def _event_type_changed(event, **kwargs):
         layout_settings.set(event, 'timetable_theme', theme)
 
 
-@signals.menu.items.connect_via('event-management-sidemenu')
-def _extend_event_management_menu_layout(sender, event, **kwargs):
-    if not event.can_manage(session.user):
-        return
-    yield SideMenuItem('layout', _('Layout'), url_for('event_layout.index', event), section='customization')
-    if event.type_ == EventType.conference:
-        yield SideMenuItem('menu', _('Menu'), url_for('event_layout.menu', event), section='customization')
-    if event.has_feature('images'):
-        yield SideMenuItem('images', _('Images'), url_for('event_layout.images', event), section='customization')
+# @signals.menu.items.connect_via('event-management-sidemenu')
+# def _extend_event_management_menu_layout(sender, event, **kwargs):
+#     if not event.can_manage(session.user):
+#         return
+#     yield SideMenuItem('layout', _('Layout'), url_for('event_layout.index', event), section='customization')
+#     if event.type_ == EventType.conference:
+#         yield SideMenuItem('menu', _('Menu'), url_for('event_layout.menu', event), section='customization')
+#     if event.has_feature('images'):
+#         yield SideMenuItem('images', _('Images'), url_for('event_layout.images', event), section='customization')
 
 
 @signals.event.cloned.connect

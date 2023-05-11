@@ -23,8 +23,8 @@ def _merge_users(target, source, **kwargs):
     StaticSite.query.filter_by(creator_id=source.id).update({StaticSite.creator_id: target.id})
 
 
-@signals.menu.items.connect_via('event-management-sidemenu')
-def _extend_event_management_menu(sender, event, **kwargs):
-    if not event.can_manage(session.user):
-        return
-    return SideMenuItem('static', _('Offline Copy'), url_for('static_site.list', event), section='advanced')
+# @signals.menu.items.connect_via('event-management-sidemenu')
+# def _extend_event_management_menu(sender, event, **kwargs):
+#     if not event.can_manage(session.user):
+#         return
+#     return SideMenuItem('static', _('Offline Copy'), url_for('static_site.list', event), section='advanced')

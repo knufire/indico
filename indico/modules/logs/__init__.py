@@ -19,11 +19,11 @@ from indico.web.menu import SideMenuItem
 __all__ = ('CategoryLogEntry', 'EventLogEntry', 'LogKind', 'CategoryLogRealm', 'EventLogRealm')
 
 
-@signals.menu.items.connect_via('event-management-sidemenu')
-def _extend_event_management_menu(sender, event, **kwargs):
-    if not event.can_manage(session.user):
-        return
-    return SideMenuItem('logs', _('Logs'), url_for('logs.event', event), section='reports')
+# @signals.menu.items.connect_via('event-management-sidemenu')
+# def _extend_event_management_menu(sender, event, **kwargs):
+#     if not event.can_manage(session.user):
+#         return
+#     return SideMenuItem('logs', _('Logs'), url_for('logs.event', event), section='reports')
 
 
 @signals.users.merged.connect

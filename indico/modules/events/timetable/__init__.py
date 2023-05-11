@@ -32,14 +32,14 @@ def _extend_event_menu(sender, **kwargs):
                         visible=_visible_timetable, static_site=True)
 
 
-@signals.menu.items.connect_via('event-management-sidemenu')
-def _extend_event_management_menu(sender, event, **kwargs):
-    from indico.modules.events.sessions.util import can_manage_sessions
-    if not can_manage_sessions(session.user, event, 'ANY'):
-        return
-    if event.type != 'lecture':
-        return SideMenuItem('timetable', _('Timetable'), url_for('timetable.management', event), weight=80,
-                            icon='calendar')
+# @signals.menu.items.connect_via('event-management-sidemenu')
+# def _extend_event_management_menu(sender, event, **kwargs):
+#     from indico.modules.events.sessions.util import can_manage_sessions
+#     if not can_manage_sessions(session.user, event, 'ANY'):
+#         return
+#     if event.type != 'lecture':
+#         return SideMenuItem('timetable', _('Timetable'), url_for('timetable.management', event), weight=80,
+#                             icon='calendar')
 
 
 @signals.event_management.get_cloners.connect

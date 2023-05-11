@@ -31,11 +31,11 @@ def _merge_users(target, source, **kwargs):
     AnonymousSurveySubmission.merge_users(target, source)
 
 
-@signals.menu.items.connect_via('event-management-sidemenu')
-def _extend_event_management_menu(sender, event, **kwargs):
-    if not event.has_feature('surveys') or not event.can_manage(session.user, 'surveys'):
-        return
-    return SideMenuItem('surveys', _('Surveys'), url_for('surveys.manage_survey_list', event), section='organization')
+# @signals.menu.items.connect_via('event-management-sidemenu')
+# def _extend_event_management_menu(sender, event, **kwargs):
+#     if not event.has_feature('surveys') or not event.can_manage(session.user, 'surveys'):
+#         return
+#     return SideMenuItem('surveys', _('Surveys'), url_for('surveys.manage_survey_list', event), section='organization')
 
 
 @signals.event.sidemenu.connect

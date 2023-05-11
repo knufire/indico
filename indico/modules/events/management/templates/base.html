@@ -18,18 +18,6 @@
     </div>
 {% endblock %}
 
-
-{% block display_view_button %}
-    <div class="group">
-        <a href="{{ event.url }}"
-           class="icon-switchon highlight i-button"
-           title="{% trans %}See the display page of the event{% endtrans %}">
-            <span>{%- trans %}Switch to display view{% endtrans -%}</span>
-        </a>
-    </div>
-{% endblock %}
-
-
 {% block before_page %}
     {% if event.is_locked %}
         {% call message_box('warning', fixed_width=true) %}

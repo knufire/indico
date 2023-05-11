@@ -54,12 +54,3 @@
     {{ render_sidemenu('category-management-sidemenu', category=category, active_item=active_menu_item) }}
 {% endblock %}
 
-{% block display_view_button %}
-    <div class="group">
-        <a href="{{ category.url }}"
-           class="icon-switchon highlight i-button"
-           title="{% trans %}See the display page of the category{% endtrans %}">
-            <span>{%- trans %}Switch to display view{% endtrans -%}</span>
-        </a>
-    </div>
-{% endblock %}

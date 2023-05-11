@@ -120,34 +120,6 @@
         </div>
         <div class="settingsSeparator"></div>
         <div class="settingsWidgetSection">
-            <a href="{{ url_for('users.user_dashboard', user_id=none) }}">
-                {%- trans %}My profile{% endtrans -%}
-            </a>
-        </div>
-        <div class="settingsWidgetSection">
-            <a href="{{ url_for('users.user_preferences', user_id=none) }}">
-                {%- trans %}My preferences{% endtrans -%}
-            </a>
-        </div>
-        <div class="settingsWidgetSection">
-            {{ _render_language_selector(languages, force_locale, force_locale_alts, lightweight=true) }}
-        </div>
-        {% if session.user.is_admin %}
-            <div class="settingsWidgetSection">
-                <div id="login-as"></div>
-            </div>
-        {% endif %}
-        {% if 'login_as_orig_user' in session %}
-            <div class="settingsWidgetSection">
-                <a class="undo-login-as" data-href="{{ url_for('auth.admin_impersonate') }}">
-                    {%- trans name=session.login_as_orig_user.user_name -%}
-                        Switch back to {{ name }}
-                    {%- endtrans -%}
-                </a>
-            </div>
-        {% endif %}
-        <div style="border-bottom: 1px solid #ddd; margin-bottom: 5px; margin-top: 10px"></div>
-        <div class="settingsWidgetSection">
             <a href="{{ url_for_logout(request.relative_url) }}">
                 {%- trans %}Logout{% endtrans -%}
             </a>
@@ -228,8 +200,6 @@
                         });
                     </script>
                 {% endif %}
-
-                {{ _render_timezone_selector(timezone_data) }}
 
                 {% if session.user %}
                     {{ _render_user_settings(languages, force_locale, force_locale_alts) }}

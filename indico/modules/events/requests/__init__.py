@@ -24,13 +24,13 @@ def _check_request_definitions(app, **kwargs):
     get_request_definitions()
 
 
-@signals.menu.items.connect_via('event-management-sidemenu')
-def _extend_event_management_menu(sender, event, **kwargs):
-    if not get_request_definitions():
-        return
-    if not event.can_manage(session.user) and not is_request_manager(session.user):
-        return
-    return SideMenuItem('requests', _('Logistics'), url_for('requests.event_requests', event), section='services')
+# @signals.menu.items.connect_via('event-management-sidemenu')
+# def _extend_event_management_menu(sender, event, **kwargs):
+#     if not get_request_definitions():
+#         return
+#     if not event.can_manage(session.user) and not is_request_manager(session.user):
+#         return
+#     return SideMenuItem('requests', _('Logistics'), url_for('requests.event_requests', event), section='services')
 
 
 @signals.event_management.management_url.connect

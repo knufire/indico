@@ -23,18 +23,18 @@ def _sidemenu_sections(sender, **kwargs):
     yield SideMenuSection('advanced', _('Advanced options'), 10, icon='lamp')
 
 
-@signals.menu.items.connect_via('event-management-sidemenu')
-def _sidemenu_items(sender, event, **kwargs):
-    from indico.modules.events.models.events import EventType
-    if event.can_manage(session.user):
-        yield SideMenuItem('settings', _('Settings'), url_for('event_management.settings', event), 100, icon='settings')
-        yield SideMenuItem('protection', _('Protection'), url_for('event_management.protection', event),
-                           70, icon='shield')
-        yield SideMenuItem('privacy_dashboard', _('Privacy'),
-                           url_for('event_management.privacy_dashboard', event), 69, sui_icon='balance scale')
-        if event.type_ == EventType.conference:
-            yield SideMenuItem('program_codes', _('Program Codes'), url_for('event_management.program_codes', event),
-                               section='advanced')
+# @signals.menu.items.connect_via('event-management-sidemenu')
+# def _sidemenu_items(sender, event, **kwargs):
+#     from indico.modules.events.models.events import EventType
+#     if event.can_manage(session.user):
+#         yield SideMenuItem('settings', _('Settings'), url_for('event_management.settings', event), 100, icon='settings')
+#         yield SideMenuItem('protection', _('Protection'), url_for('event_management.protection', event),
+#                            70, icon='shield')
+#         yield SideMenuItem('privacy_dashboard', _('Privacy'),
+#                            url_for('event_management.privacy_dashboard', event), 69, sui_icon='balance scale')
+#         if event.type_ == EventType.conference:
+#             yield SideMenuItem('program_codes', _('Program Codes'), url_for('event_management.program_codes', event),
+#                                section='advanced')
 
 
 @signals.core.get_placeholders.connect_via('program-codes-contribution')
