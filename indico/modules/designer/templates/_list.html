@@ -164,18 +164,9 @@
                                     {% trans %}Print badges{% endtrans %}
                                 {%- endif -%}
                             {%- endset %}
-                            <button class="i-button icon-print icon-only highlight text-color js-dropdown borderless
-                                                    {{ 'disabled' if not event.registration_forms }}"
-                                    title="{{ print_title if event.registration_forms
-                                                else _('There are no registration forms in this event') }}"
-                                    data-toggle="dropdown"></button>
-                            <ul class="i-dropdown">
-                                {% for regform in event.registration_forms %}
-                                    <li>
-                                        {{ _render_badge_form_button(regform, tpl, format='text', text=regform.title) }}
-                                    </li>
-                                {% endfor %}
-                            </ul>
+                            <a class="i-button icon-file icon-only highlight text-color borderless"
+                                    title="Download Template"
+                                    href="{{ url_for('.get_template_data', tpl) }}"></a>
                         {% endif %}
                     {% endif %}
                 </div>

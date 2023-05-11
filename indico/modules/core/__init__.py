@@ -23,6 +23,7 @@ def _topmenu_sections(sender, **kwargs):
 @signals.menu.items.connect_via('top-menu')
 def _topmenu_items(sender, **kwargs):
     yield TopMenuItem('home', _('Home'), url_for_index(), 100)
+    yield TopMenuItem('badges', _('Badges'), url_for_index() + 'event/1/manage/designer/', 100)
 
 
 @signals.menu.items.connect_via('admin-sidemenu')
